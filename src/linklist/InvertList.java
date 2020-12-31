@@ -42,7 +42,6 @@ public class InvertList {
             successor = head.next;
             return head;
         }
-        //以head.next做第一个节点，则需要反转后n-1个节点
         ListNode listNode = partInvertList(head.next, n - 1);
         head.next.next = head;
         head.next = successor;
@@ -58,11 +57,11 @@ public class InvertList {
      * @return
      */
     public ListNode partInvertList(ListNode head, int m, int n) {
-        if (m == 1) {
+        if (m==1){
             ListNode listNode = partInvertList(head, n);
             return listNode;
         }
-        //以head.next做第一个节点，则需要反转后m-1个节点,n-1个节点
+        //以head.next作为头结点,则往后递归m-1个节点，n-1个节点
         head.next = partInvertList(head.next, m - 1, n - 1);
         return head;
     }
@@ -70,15 +69,14 @@ public class InvertList {
 
     public static void main(String[] args) {
         ListNode first = InitDataHelper.initLinkedList();
-        System.out.println(first);
         InvertList invertList = new InvertList();
         ListNode listNode = invertList.invertList(first);
         System.out.println(listNode);
-
+//
         ListNode partInvert = InitDataHelper.initLinkedList();
         ListNode partResult = invertList.partInvertList(partInvert, 3);
         System.out.println(partResult);
-
+//
         ListNode partInvert2 = InitDataHelper.initLinkedList();
         ListNode partResult2 = invertList.partInvertList(partInvert2, 2, 4);
         System.out.println(partResult2);

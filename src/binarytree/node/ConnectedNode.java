@@ -17,5 +17,13 @@ public class ConnectedNode {
         this.val = val;
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                ", next=" + next +
+                '}';
+    }
 }

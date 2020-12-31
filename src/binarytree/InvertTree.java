@@ -10,7 +10,22 @@ import java.util.Stack;
 /**
  * 翻转树 leetcode 226题
  * https://leetcode-cn.com/problems/invert-binary-tree/
+ *
  * @author luoyi
+ * <p>
+ * **      4
+ * **    /   \
+ * **   2     7
+ * **  / \   / \
+ * ** 1   3 6   9
+ * <p>
+ * result
+ * <p>
+ * **      4
+ * **    /   \
+ * **   7     2
+ * **  / \   / \
+ * ** 9   6 3   1
  */
 public class InvertTree {
 
@@ -18,12 +33,12 @@ public class InvertTree {
         if (root == null) {
             return null;
         }
-        Node tmp = root.left;
-        root.left = root.right;
-        root.right = tmp;
 
         invertTreeRecursion(root.left);
         invertTreeRecursion(root.right);
+        Node temp = root.right;
+        root.right = root.left;
+        root.left = temp;
         return root;
     }
 
