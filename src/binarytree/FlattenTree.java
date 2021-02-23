@@ -1,6 +1,6 @@
 package binarytree;
 
-import binarytree.node.Node;
+import binarytree.node.TreeNode;
 import util.InitDataHelper;
 
 /**
@@ -14,13 +14,13 @@ import util.InitDataHelper;
  */
 public class FlattenTree {
 
-    public Node flatten(Node root) {
+    public TreeNode flatten(TreeNode root) {
         if (root == null) {
             return null;
         }
         flatten(root.left);
         flatten(root.right);
-        Node temp = root.right;
+        TreeNode temp = root.right;
         root.right = root.left;
         root.left = null;
         while (root.right != null) {
@@ -31,10 +31,10 @@ public class FlattenTree {
     }
 
     public static void main(String[] args) {
-        Node node = InitDataHelper.initTree();
+        TreeNode treeNode = InitDataHelper.initTree();
         FlattenTree flattenTree = new FlattenTree();
-        flattenTree.flatten(node);
-        System.out.println(node);
+        flattenTree.flatten(treeNode);
+        System.out.println(treeNode);
 
     }
 }

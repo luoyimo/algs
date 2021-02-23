@@ -3,13 +3,13 @@ package binarytree.node;
 /**
  * @author luoyi
  */
-public class Node {
+public class TreeNode {
 
     public int val;
 
-    public Node left, right;
+    public TreeNode left, right;
 
-    public Node(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 

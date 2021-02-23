@@ -1,6 +1,6 @@
 package binarytree;
 
-import binarytree.node.Node;
+import binarytree.node.TreeNode;
 import util.InitDataHelper;
 
 import java.util.LinkedList;
@@ -29,31 +29,31 @@ import java.util.Stack;
  */
 public class InvertTree {
 
-    public Node invertTreeRecursion(Node root) {
+    public TreeNode invertTreeRecursion(TreeNode root) {
         if (root == null) {
             return null;
         }
 
         invertTreeRecursion(root.left);
         invertTreeRecursion(root.right);
-        Node temp = root.right;
+        TreeNode temp = root.right;
         root.right = root.left;
         root.left = temp;
         return root;
     }
 
-    public Node invertTreeStack(Node root) {
+    public TreeNode invertTreeStack(TreeNode root) {
         if (root == null) {
             return null;
         }
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
-            Node pop = stack.pop();
+            TreeNode pop = stack.pop();
             if (pop == null) {
                 continue;
             }
-            Node left = pop.left;
+            TreeNode left = pop.left;
             pop.left = pop.right;
             pop.right = left;
             stack.push(pop.left);
@@ -63,18 +63,18 @@ public class InvertTree {
     }
 
 
-    public Node invertTreeQueue(Node root) {
+    public TreeNode invertTreeQueue(TreeNode root) {
         if (root == null) {
             return null;
         }
-        Queue<Node> stack = new LinkedList<>();
+        Queue<TreeNode> stack = new LinkedList<>();
         stack.add(root);
         while (!stack.isEmpty()) {
-            Node pop = stack.poll();
+            TreeNode pop = stack.poll();
             if (pop == null) {
                 continue;
             }
-            Node left = pop.left;
+            TreeNode left = pop.left;
             pop.left = pop.right;
             pop.right = left;
             stack.add(pop.left);
@@ -85,7 +85,7 @@ public class InvertTree {
 
 
     public static void main(String[] args) {
-        Node root = InitDataHelper.initTree();
+        TreeNode root = InitDataHelper.initTree();
         System.out.println(root);
         InvertTree solution = new InvertTree();
         solution.invertTreeRecursion(root);
